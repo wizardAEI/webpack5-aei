@@ -9,8 +9,8 @@ const glob = require('glob')
 module.exports = {
     entry:{
        index: path.join(__dirname,'src/js/index.js'),
-       index2: path.join(__dirname,'src/js/index2.js'),
-       other: path.join(__dirname,'src/js/other.js')
+       //index2: path.join(__dirname,'src/js/index2.js'),
+       //other: path.join(__dirname,'src/js/other.js')
     },//入口文件,若要打包多个文件就配置多个
     output:{
     path:path.join(__dirname,'dist'),//出口文件目录
@@ -86,13 +86,13 @@ module.exports = {
         new HtmlWebpackPlugin({
         template:path.join(__dirname,'src/html/index.html'),  //使用模板
         filename:'index.html', //打包后的名字
-        chunks:['index']//需要的js文件
+        //chunks:['index']//需要的js文件,不写默认所有的打包的js的chunk都会放进来
         }),
-        new HtmlWebpackPlugin({
+        /*new HtmlWebpackPlugin({
             template:path.join(__dirname,'src/html/index2.html'),  //使用模板
             filename:'index2.html', //打包后的名字
             chunks:['index2','other']//需要的js文件
-        }),
+        }),*/
         new MiniCssPlugin(),//css链接式的插件
         new OptimizeCssAssetsWebpackPplugin(),//压缩CSS的插件
         new purgecssWebpackPlugin({

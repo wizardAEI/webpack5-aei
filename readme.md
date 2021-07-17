@@ -20,6 +20,8 @@ author：iaei
 
 导入的文件目录结构：src目录下有css，html，js，img等目录，分别放置css和less，html，js，图片等文件，注意html文件里放的是html模板。
 
+默认需要一个index.html,index.html
+
 生成的目录为dist目录
 
 配置文件为webpack.onfig.js文件，相关部分已经做好了注释
