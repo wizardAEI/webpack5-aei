@@ -1,4 +1,6 @@
-author：iaei
+author：aei
+
+webpack5的一个详细配置，并持续更新中，里面的每一句话都几乎做了注释，很适合想要入门webpack5的同学学习
 
 
 作用：
@@ -20,7 +22,7 @@ author：iaei
 
 导入的文件目录结构：src目录下有css，html，js，img等目录，分别放置css和less，html，js，图片等文件，注意html文件里放的是html模板。
 
-默认需要一个index.html,index.html
+tips:默认需要一个index.html,index.js。
 
 生成的目录为dist目录
 
