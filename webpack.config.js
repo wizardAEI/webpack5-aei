@@ -8,7 +8,8 @@ const purgecssWebpackPlugin  = require('purgecss-webpack-plugin')//去除无用�
 const glob = require('glob')
 module.exports = {
     entry:{
-       index: path.join(__dirname,'src/js/index.js'),
+       index:path.join(__dirname,'src/js/index.js')
+       //index: path.join(__dirname,'src/js/index.js'),
        //index2: path.join(__dirname,'src/js/index2.js'),
        //other: path.join(__dirname,'src/js/other.js')
     },//入口文件,若要打包多个文件就配置多个
@@ -47,15 +48,18 @@ module.exports = {
           },
           {
             test: /\.css$/i,
+            exclude: /node_modules/,
             //use: ['style-loader', 'css-loader']//倒叙放置，因为loader加载时倒叙加载的
             use: [MiniCssPlugin.loader, 'css-loader','postcss-loader']//采用插件让css变成链接式的，postcss-loader是用来解决浏览器的兼容
           },
           {
             test: /\.less$/i,
+            exclude: /node_modules/,
             use:[MiniCssPlugin.loader,'css-loader','postcss-loader','less-loader']//编译less的插件
           },
           {
             test:/\.(png|jpe?g|gif|jfif|svg)$/i,
+            exclude: /node_modules/,
             type:"asset", 
             generator:{
               filename:"img/[name].[hash:6][ext]"//将图片资源打包到img目录下
@@ -67,7 +71,7 @@ module.exports = {
             }//8KB以上就不要转码了，不然影响效率
           },
           {
-              exclude:/\.(js|json|html|css|less|scss|png|jpe?g|gif|jfif|svg)$/,
+              exclude:/(\.(js|json|html|css|less|scss|png|jpe?g|gif|jfif|svg|tsx?)$|node_modules)/,
               type:"asset/resource",
               generator:{
                 filename:"other/[name].[hash:6][ext]"//配置的其他资源，统一输出到other
@@ -75,10 +79,19 @@ module.exports = {
           },
           {
             test:/\.html$/i,
+            exclude: /node_modules/,
             loader:'html-loader',//将图片资源引入
-          }
+          },
+          {
+            test: /\.tsx?$/,
+            use: 'ts-loader',
+            exclude: /node_modules/,
+          },//编译ts
         ],
     }, //loader->用于编译不同的文件
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js'],
+    },//配置模块化引入文件的缺省类型
     plugins: [
         new webpack.HotModuleReplacementPlugin(),//热更新插件
         new CleanWebpackPlugin(),//每次webpack删除dist  
@@ -100,5 +113,5 @@ module.exports = {
         })
     ],
     target: process.env.NODE_ENV === "development" ? "web" : "browserslist",//webpack5，加上这句话才可以自动刷新
-    mode: 'production', // 设置mode   production  development
+    mode: 'development', // 设置mode   production  development
 } 

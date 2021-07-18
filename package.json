@@ -26,17 +26,17 @@
     "optimize-css-assets-webpack-plugin": "^6.0.1",
     "postcss-loader": "^6.1.1",
     "postcss-preset-env": "^6.7.0",
+    "purgecss-webpack-plugin": "^4.0.3",
     "style-loader": "^3.0.0",
+    "ts-loader": "^9.2.3",
+    "typescript": "^4.3.5",
     "webpack": "^5.42.1",
     "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2",
-    "purgecss-webpack-plugin": "^4.0.3"
+    "webpack-dev-server": "^3.11.2"
   },
   "browserslist": [
     "> 0.2%",
     "last 2 version",
     "not dead"
-  ],
-  "dependencies": {
-  }
+  ]
 }
