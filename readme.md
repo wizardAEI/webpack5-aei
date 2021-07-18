@@ -8,10 +8,11 @@ webpack5的一个详细配置，并持续更新中，里面的每一句话都几
 2. 使用了Less插件
 3. 加入了mini-css-extract-plugin插件，让CSS导入变成链接式的
 4. 处理了CSS在不同浏览器上的兼容性
-5. 压缩了JS,CSS,HTML
+5. 支持js,html,css,less,ts等
 6. 打包图片资源（包括打包了html中的src下的图片，CSS引用的url里的图片和js引用的图片等）
 7. dev serve 的搭建和热替换，一键加载，HTML不可以自动刷新，需要手动刷新一下（已知BUG）
 8. 去除死代码
+9. 默认为开发模式，在webpack.config.js中更改mode为production，代码将压缩
 
 
 
