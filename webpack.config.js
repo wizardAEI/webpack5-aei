@@ -7,10 +7,11 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')//每次webpack删
 const purgecssWebpackPlugin  = require('purgecss-webpack-plugin')//去除无用的Css
 const glob = require('glob')
 module.exports = {
+    devtool: 'source-map',
     entry:{
-       index:path.join(__dirname,'src/js/index.js')
-       //index: path.join(__dirname,'src/js/index.js'),
-       //index2: path.join(__dirname,'src/js/index2.js'),
+       index:path.join(__dirname,'src/js/script.js')
+       //index: path.join(__dirname,'src/js/index.ts'),
+       //index2: path.join(__dirname,'src/js/index2.ts'),
        //other: path.join(__dirname,'src/js/other.js')
     },//入口文件,若要打包多个文件就配置多个
     output:{
@@ -41,7 +42,7 @@ module.exports = {
                 loader: 'babel-loader',
                 options: {         // options选项
                     presets: ['@babel/preset-env'],  // presets设置的就是当前js的版本
-                    plugins: [] // plugin是需要的插件       
+                    plugins: ['@babel/plugin-transform-runtime'] // plugin是需要的插件       
                 }
             }
             ,
